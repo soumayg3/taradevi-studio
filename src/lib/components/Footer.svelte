@@ -8,13 +8,13 @@
 <footer class="footer">
   <div class="footer-inner">
 
-    <!-- CTA block -->
+    <!-- CTA -->
     <div class="footer-cta-block">
-      <p class="footer-label">Get in touch</p>
-      <p class="footer-cta">Interested in working<br />together? Let's connect!</p>
+      <p class="footer-eyebrow">Open to collaboration</p>
+      <p class="footer-cta">Let's create<br />something remarkable.</p>
     </div>
 
-    <!-- Divider -->
+    <!-- Rule -->
     <div class="footer-rule"></div>
 
     <!-- Bottom row -->
@@ -24,12 +24,12 @@
         <p class="footer-name">{siteData.name}</p>
       </div>
 
-      <div class="footer-contact">
-        <a href="mailto:{siteData.contact.email}" class="footer-email">
+      <div class="footer-links">
+        <a href="mailto:{siteData.contact.email}" class="footer-link">
           <i class="fa-regular fa-envelope"></i>
           {siteData.contact.email}
         </a>
-        <a href={siteData.contact.linkedin} target="_blank" rel="noopener noreferrer" class="footer-linkedin">
+        <a href={siteData.contact.linkedin} target="_blank" rel="noopener noreferrer" class="footer-link">
           <i class="fa-brands fa-linkedin-in"></i>
           LinkedIn
         </a>
@@ -54,21 +54,20 @@
     padding: 5rem var(--page-pad) 3rem;
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
 
-  /* CTA block */
+  /* CTA */
   .footer-cta-block {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    padding-bottom: 4rem;
+    gap: 1.5rem;
+    padding-bottom: 5rem;
   }
 
-  .footer-label {
+  .footer-eyebrow {
     font-family: var(--font-body);
-    font-size: 0.68rem;
-    letter-spacing: 0.3em;
+    font-size: 0.65rem;
+    letter-spacing: 0.38em;
     text-transform: uppercase;
     color: var(--color-muted);
     font-weight: 400;
@@ -76,15 +75,14 @@
 
   .footer-cta {
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5vw, 4rem);
-    font-style: normal;
+    font-size: clamp(2.8rem, 6vw, 5rem);
     font-weight: 300;
     color: var(--color-text);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
   }
 
-  /* Divider */
+  /* Rule */
   .footer-rule {
     border-top: 1px solid var(--color-border);
   }
@@ -93,27 +91,27 @@
   .footer-bottom {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 2.5rem 0 2rem;
+    align-items: center;
+    padding: 2.25rem 0 1.75rem;
     gap: 2rem;
   }
 
   .footer-identity {
     display: flex;
     align-items: center;
-    gap: 1.1rem;
+    gap: 1rem;
   }
 
   .footer-monogram {
-    width: 2.75rem;
-    height: 2.75rem;
-    opacity: 0.9;
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.85;
     flex-shrink: 0;
   }
 
   .footer-name {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 300;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -121,60 +119,58 @@
     line-height: 1;
   }
 
-  /* Contact links */
-  .footer-contact {
+  /* Links */
+  .footer-links {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
-  .footer-email,
-  .footer-linkedin {
+  .footer-link {
     font-family: var(--font-body);
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: var(--color-muted);
     letter-spacing: 0.08em;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.55rem;
     transition: color 0.25s;
   }
 
-  .footer-email:hover,
-  .footer-linkedin:hover {
+  .footer-link:hover {
     color: var(--color-text);
   }
 
-  .footer-email i,
-  .footer-linkedin i {
+  .footer-link i {
     font-size: 0.7rem;
-    opacity: 0.7;
+    opacity: 0.65;
   }
 
   /* Copyright */
   .footer-copy {
     font-family: var(--font-body);
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--color-muted);
-    opacity: 0.6;
-    padding-top: 0.5rem;
+    opacity: 0.5;
+    padding-top: 0.75rem;
     border-top: 1px solid var(--color-border);
   }
 
   @media (max-width: 640px) {
     .footer-cta {
-      font-size: clamp(1.8rem, 7vw, 2.6rem);
+      font-size: clamp(2rem, 8vw, 3rem);
     }
 
     .footer-bottom {
       flex-direction: column;
+      align-items: flex-start;
       gap: 2rem;
     }
 
-    .footer-contact {
+    .footer-links {
       align-items: flex-start;
     }
   }

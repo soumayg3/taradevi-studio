@@ -41,6 +41,15 @@
             </div>
           {/each}
         </div>
+
+        <div class="brand-row">
+          <p class="brand-label">Worked with</p>
+          <div class="brand-logos">
+            {#each siteData.experience as job}
+              <span class="brand-name">{job.company}</span>
+            {/each}
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -212,6 +221,41 @@
     text-transform: uppercase;
     color: var(--color-muted);
     font-weight: 400;
+  }
+
+  /* Brand row */
+  .brand-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    margin-top: 0.5rem;
+  }
+
+  .brand-label {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    font-weight: 400;
+  }
+
+  .brand-logos {
+    display: flex;
+    gap: 2rem;
+    align-items: baseline;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--color-text);
+    opacity: 0.55;
+    text-transform: uppercase;
   }
 
   /* ── Section 2: Expertise ── */

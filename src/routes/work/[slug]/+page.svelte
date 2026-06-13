@@ -259,7 +259,7 @@
       <section class="related">
         <h2 class="related-label">Related Work</h2>
         <div class="related-grid">
-          {#each data.related as rel, i}
+          {#each data.related as rel}
             <a href="/work/{rel.slug}" class="related-item" style="--accent: {rel.color}">
               <div class="related-thumb">
                 <img src={rel.image} alt={rel.title} loading="lazy" />
@@ -367,7 +367,7 @@
   .media-topic {
     font-family: var(--font-display);
     font-size: clamp(1.2rem, 3vw, 1.7rem);
-    font-weight: 600;
+    font-weight: 300;
     line-height: 1.4;
     letter-spacing: -0.01em;
     color: var(--color-text);

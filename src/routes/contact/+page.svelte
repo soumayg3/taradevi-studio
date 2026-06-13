@@ -13,53 +13,82 @@
 
 <section class="contact-page">
 	<div class="contact-inner">
-		<p class="eyebrow">Get in touch</p>
-		<h1 class="page-title">Let's<br /><em>Connect</em></h1>
-		<p class="contact-subtitle">
-			Looking for a creative leader who blends strategy with execution?
-		</p>
+		<div class="contact-grid">
 
-		<div class="contact-links">
-			<a href="mailto:{siteData.contact.email}" class="contact-item">
-				<div class="contact-accent" style="background-color: var(--color-pink)"></div>
-				<i class="fa-regular fa-envelope contact-icon"></i>
-				<div class="contact-text">
-					<span class="contact-label">Email</span>
-					<span class="contact-value">{siteData.contact.email}</span>
-				</div>
-				<span class="contact-arrow">→</span>
-			</a>
+			<!-- Left: Editorial headline -->
+			<div class="contact-left">
+				<p class="eyebrow">Contact</p>
+				<h1 class="headline">
+					<span>Let's</span>
+					<em>work</em>
+					<span>together.</span>
+				</h1>
+				<p class="tagline">
+					Open to art direction, campaign production, and creative strategy engagements.
+				</p>
+			</div>
 
-			<a
-				href={siteData.contact.linkedin}
-				target="_blank"
-				rel="noopener noreferrer"
-				class="contact-item"
-			>
-				<div class="contact-accent" style="background-color: var(--color-blue)"></div>
-				<i class="fa-brands fa-linkedin-in contact-icon"></i>
-				<div class="contact-text">
-					<span class="contact-label">LinkedIn</span>
-					<span class="contact-value">tara-devi</span>
+			<!-- Right: Links -->
+			<div class="contact-right">
+				<p class="contact-prompt">Reach out directly</p>
+				<div class="contact-links">
+					<a href="mailto:{siteData.contact.email}" class="contact-item">
+						<div class="contact-item-inner">
+							<div class="contact-meta">
+								<span class="contact-label">Email</span>
+								<span class="contact-value">{siteData.contact.email}</span>
+							</div>
+							<span class="contact-arrow">→</span>
+						</div>
+					</a>
+
+					<a
+						href={siteData.contact.linkedin}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="contact-item"
+					>
+						<div class="contact-item-inner">
+							<div class="contact-meta">
+								<span class="contact-label">LinkedIn</span>
+								<span class="contact-value">tara-devi</span>
+							</div>
+							<span class="contact-arrow">→</span>
+						</div>
+					</a>
 				</div>
-				<span class="contact-arrow">→</span>
-			</a>
+			</div>
+
 		</div>
 	</div>
 </section>
 
 <style>
 	.contact-page {
-		padding: 5rem var(--page-pad);
-		min-height: 65vh;
+		min-height: calc(100svh - 4rem);
 		display: flex;
 		align-items: center;
+		padding: 5rem var(--page-pad);
 	}
 
 	.contact-inner {
-		max-width: 680px;
+		max-width: var(--page-max);
 		margin: 0 auto;
 		width: 100%;
+	}
+
+	.contact-grid {
+		display: grid;
+		grid-template-columns: 1.1fr 0.9fr;
+		gap: 8rem;
+		align-items: center;
+	}
+
+	/* Left */
+	.contact-left {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
 	}
 
 	.eyebrow {
@@ -68,33 +97,52 @@
 		letter-spacing: 0.4em;
 		text-transform: uppercase;
 		color: var(--color-muted);
-		margin-bottom: 1rem;
 		font-weight: 400;
 	}
 
-	.page-title {
+	.headline {
 		font-family: var(--font-display);
-		font-size: clamp(2.2rem, 8vw, 7rem);
+		font-size: clamp(3.5rem, 7vw, 6.5rem);
 		font-weight: 300;
-		line-height: 0.95;
+		line-height: 1;
 		letter-spacing: -0.02em;
-		margin-bottom: 1.75rem;
+		display: flex;
+		flex-direction: column;
 	}
 
-	.page-title em {
-		font-style: italic;
-		font-weight: 300;
-	}
-
-	.contact-subtitle {
-		font-family: var(--font-display);
-		font-size: 1.15rem;
+	.headline em {
 		font-style: italic;
 		font-weight: 300;
 		color: var(--color-muted);
-		margin-bottom: 3.5rem;
-		line-height: 1.6;
+	}
+
+	.tagline {
+		font-family: var(--font-display);
+		font-size: 1rem;
+		font-style: italic;
+		font-weight: 300;
+		color: var(--color-muted);
+		line-height: 1.8;
 		letter-spacing: 0.01em;
+		max-width: 36ch;
+		padding-left: 1.25rem;
+		border-left: 1px solid var(--color-border);
+	}
+
+	/* Right */
+	.contact-right {
+		display: flex;
+		flex-direction: column;
+		gap: 1.75rem;
+	}
+
+	.contact-prompt {
+		font-family: var(--font-body);
+		font-size: 0.65rem;
+		letter-spacing: 0.4em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+		font-weight: 400;
 	}
 
 	.contact-links {
@@ -103,63 +151,56 @@
 	}
 
 	.contact-item {
-		display: flex;
-		align-items: center;
-		gap: 1.5rem;
-		padding: 1.5rem 0;
+		display: block;
+		padding: 1.75rem 0;
 		border-bottom: 1px solid var(--color-border);
-		transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		text-decoration: none;
+		color: inherit;
 	}
 
 	.contact-item:first-child {
 		border-top: 1px solid var(--color-border);
 	}
 
-	.contact-item:hover {
+	.contact-item-inner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+
+	.contact-item:hover .contact-item-inner {
 		transform: translateX(6px);
 	}
 
-	.contact-accent {
-		width: 3px;
-		height: 2rem;
-		flex-shrink: 0;
-		border-radius: 1px;
-	}
-
-	.contact-icon {
-		font-size: 1rem;
-		width: 1.25rem;
-		text-align: center;
-		color: var(--color-muted);
-		flex-shrink: 0;
-	}
-
-	.contact-text {
+	.contact-meta {
 		display: flex;
 		flex-direction: column;
-		gap: 0.15rem;
-		flex: 1;
+		gap: 0.3rem;
 	}
 
 	.contact-label {
 		font-family: var(--font-body);
 		font-size: 0.58rem;
-		letter-spacing: 0.25em;
+		letter-spacing: 0.3em;
 		text-transform: uppercase;
 		color: var(--color-muted);
 		font-weight: 400;
 	}
 
 	.contact-value {
-		font-family: var(--font-body);
-		font-size: 0.9rem;
-		font-weight: 400;
-		letter-spacing: 0.02em;
+		font-family: var(--font-display);
+		font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+		font-weight: 300;
+		letter-spacing: -0.01em;
+		color: var(--color-text);
 	}
 
 	.contact-arrow {
-		font-size: 1.1rem;
+		font-size: 1.25rem;
 		color: var(--color-muted);
+		flex-shrink: 0;
 		transition: transform 0.25s ease, color 0.25s ease;
 	}
 
@@ -168,10 +209,21 @@
 		color: var(--color-text);
 	}
 
+	@media (max-width: 900px) {
+		.contact-grid {
+			grid-template-columns: 1fr;
+			gap: 4rem;
+		}
+
+		.contact-page {
+			align-items: flex-start;
+		}
+	}
+
 	@media (max-width: 640px) {
 		.contact-page {
 			padding: 3rem var(--page-pad);
-			align-items: flex-start;
+			min-height: unset;
 		}
 	}
 </style>

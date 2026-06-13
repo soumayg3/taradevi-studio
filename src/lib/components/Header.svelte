@@ -38,12 +38,13 @@
 
   .logo-name {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: clamp(0.75rem, 3.2vw, 1.15rem);
     font-weight: 300;
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--color-text);
     transition: opacity 0.4s ease;
+    white-space: nowrap;
   }
 
   .logo:hover .logo-name {
