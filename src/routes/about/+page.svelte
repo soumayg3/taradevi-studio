@@ -95,11 +95,34 @@
 
 <style>
   .section {
-    padding: 5rem var(--page-pad);
+    padding: clamp(5rem, 9vw, 9rem) var(--page-pad);
+  }
+
+  .profile-section {
+    min-height: calc(100svh - 4.5rem);
+    padding-top: clamp(2.5rem, 5vh, 4rem);
+    padding-bottom: clamp(2.5rem, 5vh, 4rem);
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(circle at 7% 18%, rgba(234, 219, 213, 0.88), transparent 30rem),
+      linear-gradient(180deg, rgba(250, 248, 243, 0.55), transparent);
+  }
+
+  .profile-section .container {
+    width: 100%;
+  }
+
+  .expertise-section {
+    background: linear-gradient(180deg, transparent, rgba(233, 225, 205, 0.3), transparent);
+  }
+
+  .experience-section {
+    background: linear-gradient(180deg, transparent, rgba(229, 223, 235, 0.32));
   }
 
   .section + .section {
-    padding-top: 0;
+    padding-top: clamp(5rem, 9vw, 9rem);
   }
 
   .container {
@@ -113,53 +136,55 @@
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--color-muted);
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     font-weight: 400;
   }
 
   /* ── Section 1: Profile ── */
   .profile-grid {
     display: grid;
-    grid-template-columns: 1fr 1.15fr;
-    gap: 5rem;
-    align-items: start;
+    grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: center;
   }
 
   .profile-image-wrapper {
-    position: sticky;
-    top: 5.5rem;
+    position: relative;
     border-radius: 0;
     overflow: hidden;
     background-color: var(--color-lavender);
     aspect-ratio: 3/4;
+    max-height: calc(100svh - 12rem);
+    box-shadow: 1.5rem 1.5rem 0 rgba(229, 223, 235, 0.72);
   }
 
   .profile-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: saturate(0.88) contrast(1.02);
   }
 
   .profile-content {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: clamp(0.9rem, 1.8vh, 1.5rem);
   }
 
   .about-name {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 7vw, 5.5rem);
+    font-size: clamp(4.5rem, min(8vw, 13vh), 8rem);
     font-weight: 300;
-    letter-spacing: 0.04em;
+    letter-spacing: -0.055em;
     margin-top: -0.5rem;
-    line-height: 0.95;
+    line-height: 0.9;
   }
 
   .about-roles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: -0.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
   }
 
   .about-role {
@@ -168,29 +193,41 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-muted);
-    border: 1px solid var(--color-border);
-    padding: 0.3rem 0.65rem;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 0;
     font-weight: 400;
+  }
+
+  .about-role:nth-child(odd) {
+    padding-right: 1rem;
+  }
+
+  .about-role:nth-child(even) {
+    padding-left: 1rem;
+    border-left: 1px solid var(--color-border);
   }
 
   .about-summary {
     font-family: var(--font-body);
-    font-size: 0.92rem;
-    line-height: 1.9;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+    line-height: 1.65;
+    font-style: italic;
+    color: var(--color-muted);
     letter-spacing: 0.01em;
   }
 
   .highlights {
-    display: flex;
-    gap: 0.85rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
   }
 
   .highlight-card {
-    flex: 1;
-    min-width: 100px;
-    padding: 1.25rem 1rem;
-    border-radius: 2px;
+    padding: 1.5rem 1rem;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -200,7 +237,7 @@
 
   .highlight-value {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-size: clamp(2rem, 4vw, 3.25rem);
     font-weight: 300;
     letter-spacing: -0.02em;
   }
@@ -221,35 +258,45 @@
 
   .expertise-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
   }
 
   .expertise-card {
-    padding: 1.75rem 1.5rem;
-    border-radius: 2px;
+    padding: clamp(2rem, 4vw, 3.5rem);
+    border-radius: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.85rem;
+    min-height: 25rem;
+    transition: transform 0.45s var(--ease-editorial), filter 0.45s ease;
+  }
+
+  .expertise-card:hover {
+    transform: translateY(-5px);
+    filter: saturate(1.08);
   }
 
   .expertise-icon {
-    font-size: 1.1rem;
-    opacity: 0.5;
+    font-size: 1.5rem;
+    opacity: 0.65;
     line-height: 1;
-    margin-bottom: 0.1rem;
+    margin-bottom: auto;
   }
 
   .expertise-title {
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-size: clamp(1.75rem, 3vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.05;
     letter-spacing: 0.01em;
   }
 
   .expertise-desc {
     font-family: var(--font-body);
-    font-size: 0.8rem;
+    font-size: 0.86rem;
     line-height: 1.8;
     color: var(--color-muted);
     flex: 1;
@@ -264,15 +311,18 @@
   .experience-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0;
+    border-top: 1px solid var(--color-border);
   }
 
   .job {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-    padding: 1.75rem 2rem;
-    border-radius: 2px;
+    gap: 0.4rem;
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--color-border);
+    background-color: transparent !important;
   }
 
   .job-header {
@@ -285,8 +335,9 @@
 
   .job-company {
     font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 400;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 300;
+    letter-spacing: -0.035em;
     letter-spacing: 0.01em;
   }
 
@@ -300,7 +351,7 @@
 
   .job-role {
     font-family: var(--font-display);
-    font-size: 0.95rem;
+    font-size: 1.3rem;
     font-style: italic;
     font-weight: 300;
     letter-spacing: 0.01em;
@@ -316,9 +367,10 @@
 
   .job-description {
     font-family: var(--font-body);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     line-height: 1.8;
-    margin-top: 0.65rem;
+    margin-top: 1.25rem;
+    max-width: 850px;
     letter-spacing: 0.01em;
   }
 
@@ -327,13 +379,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
   .skill-tag {
     font-family: var(--font-body);
     font-size: 0.62rem;
-    padding: 0.2rem 0.6rem;
+    padding: 0.3rem 0.7rem;
     border-radius: 0;
     background-color: transparent;
     border: 1px solid rgba(0, 0, 0, 0.18);
@@ -343,8 +395,8 @@
 
   /* ── Responsive ── */
   @media (max-width: 1024px) {
-    .expertise-grid {
-      grid-template-columns: 1fr 1fr;
+    .profile-grid {
+      gap: 3.5rem;
     }
   }
 
@@ -358,13 +410,19 @@
       gap: 2.5rem;
     }
 
-    .profile-image-wrapper {
-      position: static;
-      aspect-ratio: auto;
+    .profile-section {
+      min-height: auto;
+      display: block;
     }
 
-    .profile-image {
-      height: auto;
+    .profile-image-wrapper {
+      position: static;
+      aspect-ratio: 4/5;
+      max-height: none;
+    }
+
+    .about-name {
+      font-size: clamp(4rem, 17vw, 7rem);
     }
 
     .expertise-grid {
@@ -373,8 +431,30 @@
   }
 
   @media (max-width: 480px) {
+    .about-roles {
+      grid-template-columns: 1fr;
+    }
+
+    .about-role:nth-child(even) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .highlights {
+      grid-template-columns: 1fr;
+    }
+
     .expertise-grid {
       grid-template-columns: 1fr;
+    }
+
+    .expertise-card {
+      min-height: 21rem;
+    }
+
+    .job-header {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 </style>

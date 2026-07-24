@@ -12,12 +12,18 @@
 	<meta property="og:title" content={siteData.seo.home.title} />
 	<meta property="og:description" content={siteData.seo.home.description} />
 	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://taradevi.studio/" />
+	<meta property="og:image" content="https://taradevi.studio{featuredProjects[0].image}" />
+	<meta name="twitter:title" content={siteData.seo.home.title} />
+	<meta name="twitter:description" content={siteData.seo.home.description} />
+	<meta name="twitter:image" content="https://taradevi.studio{featuredProjects[0].image}" />
+	<link rel="canonical" href="https://taradevi.studio/" />
 </svelte:head>
 
 <!-- Hero Section -->
 <section class="hero">
-	<p class="hero-eyebrow">Creative Strategy · Visual Production · Brand Storytelling</p>
 	<div class="hero-inner">
+		<p class="hero-eyebrow">Creative Strategy · Visual Production · Brand Storytelling</p>
 		<h1 class="hero-title">{siteData.title}</h1>
 		<p class="hero-dash">—</p>
 		<p class="hero-summary">{siteData.summary}</p>
@@ -70,11 +76,16 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		min-height: calc(100svh - 12rem);
+		min-height: min(820px, calc(100svh - 4.5rem));
+		position: relative;
+		text-align: center;
+		background:
+			radial-gradient(circle at 12% 22%, rgba(234, 219, 213, 0.7), transparent 24rem),
+			radial-gradient(circle at 88% 78%, rgba(220, 229, 231, 0.55), transparent 25rem);
 	}
 
 	.hero-inner {
-		max-width: 960px;
+		max-width: 1120px;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
@@ -83,41 +94,41 @@
 
 	.hero-eyebrow {
 		font-family: var(--font-body);
-		font-size: 0.75rem;
-		letter-spacing: 0.5em;
+		font-size: 0.7rem;
+		letter-spacing: 0.38em;
 		text-transform: uppercase;
 		color: var(--color-muted);
 		font-weight: 400;
-		margin-top: 2rem;
-		margin-bottom: auto;
+		margin-bottom: clamp(2rem, 6vh, 4.5rem);
 	}
 
 	.hero-title {
 		font-family: var(--font-display);
-		font-size: clamp(2rem, 7vw, 5.5rem);
+		font-size: clamp(3.4rem, 9vw, 8.2rem);
 		font-weight: 300;
-		line-height: 1.1;
+		line-height: 1.12;
 		color: var(--color-text);
-		letter-spacing: -0.02em;
+		letter-spacing: -0.055em;
 		margin-bottom: 0;
 	}
 
 	.hero-dash {
 		font-family: var(--font-display);
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		font-weight: 300;
-		color: var(--color-border);
+		color: var(--color-muted);
 		letter-spacing: 0.5em;
 	}
 
 	.hero-summary {
 		font-family: var(--font-display);
-		font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+		font-size: clamp(1rem, 1.7vw, 1.3rem);
 		font-weight: 300;
 		font-style: italic;
-		line-height: 1.85;
+		line-height: 1.75;
 		color: var(--color-muted);
 		letter-spacing: 0.01em;
+		max-width: 860px;
 	}
 
 	.divider {
@@ -135,8 +146,9 @@
 
 	/* Projects */
 	.projects {
-		padding-top: 5rem;
+		padding-top: 2rem;
 		padding-bottom: 5rem;
+		background: linear-gradient(180deg, transparent, rgba(250, 248, 243, 0.72) 14rem);
 	}
 
 	.projects-header {
@@ -148,7 +160,7 @@
 	.projects-list {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem;
+		gap: 1px;
 		margin-bottom: 2rem;
 	}
 
@@ -163,26 +175,29 @@
 	}
 
 	.project-card {
-		background-color: var(--accent);
-		transition: transform 0.3s ease;
+		background: var(--color-surface);
+		border-top: 1px solid var(--color-border);
 	}
 
 	.project-card-inner {
 		max-width: var(--page-max);
 		margin: 0 auto;
-		padding: 2.5rem var(--page-pad);
+		padding: clamp(2rem, 5vw, 5rem) var(--page-pad);
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 3.5rem;
+		grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+		gap: clamp(2rem, 7vw, 7rem);
 		align-items: center;
 	}
 
 	.project-card-link:hover .project-card {
-		transform: translateY(-3px);
+		background: var(--accent);
 	}
 
 	.project-card-link:nth-child(even) .project-image {
 		order: 2;
+	}
+	.project-card-link:nth-child(even) .project-card-inner {
+		grid-template-columns: minmax(280px, .55fr) minmax(0, 1.45fr);
 	}
 
 	.view-all-wrapper {
@@ -192,9 +207,9 @@
 	}
 
 	.project-image {
-		border-radius: 2px;
+		border-radius: 0;
 		overflow: hidden;
-		aspect-ratio: 4/3;
+		aspect-ratio: 16/10;
 		background-color: rgba(0, 0, 0, 0.04);
 	}
 
@@ -202,11 +217,11 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.5s ease;
+		transition: transform 0.9s var(--ease-editorial);
 	}
 
 	.project-card-link:hover .project-image img {
-		transform: scale(1.04);
+		transform: scale(1.025);
 	}
 
 	.project-details {
@@ -217,9 +232,9 @@
 
 	.project-title {
 		font-family: var(--font-display);
-		font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+		font-size: clamp(2rem, 3.6vw, 3.75rem);
 		font-weight: 300;
-		line-height: 1.15;
+		line-height: 0.98;
 		margin-top: 0.3rem;
 		letter-spacing: -0.01em;
 	}
@@ -227,7 +242,7 @@
 	.project-note {
 		font-family: var(--font-body);
 		font-size: 0.85rem;
-		color: var(--color-muted);
+		color: #504e48;
 		line-height: 1.75;
 		letter-spacing: 0.01em;
 	}
@@ -298,11 +313,11 @@
 	@media (max-width: 768px) {
 		.hero {
 			min-height: calc(100svh - 3.5rem);
-			padding: 2rem var(--page-pad);
+			padding: 4rem var(--page-pad);
 		}
 
 		.hero-eyebrow {
-			margin-bottom: 2rem;
+			margin-bottom: 2.5rem;
 		}
 
 		.hero-dash {
@@ -318,6 +333,12 @@
 			grid-template-columns: 1fr;
 			gap: 1.5rem;
 			padding: 1.75rem var(--page-pad);
+		}
+		.project-card-link:nth-child(even) .project-card-inner {
+			grid-template-columns: 1fr;
+		}
+		.project-card-link:nth-child(even) .project-image {
+			order: 0;
 		}
 	}
 </style>

@@ -44,6 +44,7 @@
   .work-page {
     padding-top: 5rem;
     padding-bottom: 5rem;
+    background: linear-gradient(180deg, rgba(220, 229, 231, 0.78), transparent 25rem);
   }
 
   .work-header {

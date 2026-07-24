@@ -43,7 +43,7 @@
   <meta property="og:type" content="article" />
 </svelte:head>
 
-<article class="project-page">
+<article class="project-page" style="--project-accent: {data.project.color}">
   <div class="project-inner">
     <!-- Breadcrumb -->
     <nav class="breadcrumb">
@@ -286,6 +286,7 @@
 <style>
   .project-page {
     padding: 3.5rem var(--page-pad);
+    background: linear-gradient(180deg, var(--project-accent) 0, transparent 28rem);
   }
 
   .project-inner {

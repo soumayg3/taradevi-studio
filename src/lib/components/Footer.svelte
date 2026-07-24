@@ -44,14 +44,20 @@
 
 <style>
   .footer {
-    border-top: 1px solid var(--color-border);
-    margin-top: 8rem;
+    --footer-text: var(--color-text);
+    --footer-muted: var(--color-muted);
+    --footer-rule: rgba(23, 22, 18, 0.16);
+    margin-top: clamp(5rem, 10vw, 10rem);
+    background:
+      radial-gradient(circle at 85% 20%, rgba(229, 223, 235, 0.72), transparent 28rem),
+      linear-gradient(135deg, #e8dfd2, #eee7dc);
+    color: var(--footer-text);
   }
 
   .footer-inner {
     max-width: var(--page-max);
     margin: 0 auto;
-    padding: 5rem var(--page-pad) 3rem;
+    padding: clamp(4rem, 8vw, 7.5rem) var(--page-pad) 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -59,10 +65,11 @@
 
   /* CTA block */
   .footer-cta-block {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding-bottom: 4rem;
+    display: grid;
+    grid-template-columns: minmax(7rem, 0.28fr) 1fr;
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+    padding-bottom: clamp(4rem, 8vw, 7rem);
   }
 
   .footer-label {
@@ -70,23 +77,24 @@
     font-size: 0.68rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--color-muted);
+    color: var(--footer-muted);
     font-weight: 400;
   }
 
   .footer-cta {
     font-family: var(--font-display);
-    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-size: clamp(3rem, 7vw, 6.8rem);
     font-style: normal;
     font-weight: 300;
-    color: var(--color-text);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    color: var(--footer-text);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    max-width: 980px;
   }
 
   /* Divider */
   .footer-rule {
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--footer-rule);
   }
 
   /* Bottom row */
@@ -94,7 +102,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 2.5rem 0 2rem;
+    padding: 2rem 0;
     gap: 2rem;
   }
 
@@ -105,45 +113,45 @@
   }
 
   .footer-monogram {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.4rem;
+    height: 2.4rem;
     opacity: 0.9;
     flex-shrink: 0;
   }
 
   .footer-name {
     font-family: var(--font-display);
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 300;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--color-text);
+    color: var(--footer-text);
     line-height: 1;
   }
 
   /* Contact links */
   .footer-contact {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.75rem;
+    align-items: center;
+    gap: clamp(1.25rem, 4vw, 3.5rem);
   }
 
   .footer-email,
   .footer-linkedin {
     font-family: var(--font-body);
     font-size: 0.78rem;
-    color: var(--color-muted);
+    color: var(--footer-muted);
     letter-spacing: 0.08em;
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    transition: color 0.25s;
+    transition: color 0.25s ease, transform 0.25s ease;
   }
 
   .footer-email:hover,
   .footer-linkedin:hover {
-    color: var(--color-text);
+    color: var(--footer-text);
+    transform: translateY(-2px);
   }
 
   .footer-email i,
@@ -158,15 +166,20 @@
     font-size: 0.6rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-muted);
-    opacity: 0.6;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--color-border);
+    color: var(--footer-muted);
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--footer-rule);
   }
 
   @media (max-width: 640px) {
+    .footer-cta-block {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
     .footer-cta {
-      font-size: clamp(1.8rem, 7vw, 2.6rem);
+      font-size: clamp(2.6rem, 12vw, 4rem);
+      line-height: 1.08;
     }
 
     .footer-bottom {
@@ -175,6 +188,7 @@
     }
 
     .footer-contact {
+      flex-direction: column;
       align-items: flex-start;
     }
   }
