@@ -3,6 +3,18 @@
 
   const roles = siteData.aboutTitle.split(' | ');
   const expColors = ['var(--color-pink)', 'var(--color-yellow)'];
+  const siteUrl = 'https://taradevi.studio';
+  const profileImageUrl = `${siteUrl}${siteData.profileImage}`;
+  const profilePageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${siteUrl}/about#profile-page`,
+    url: `${siteUrl}/about`,
+    name: siteData.seo.about.title,
+    description: siteData.seo.about.description,
+    primaryImageOfPage: { '@id': `${siteUrl}/#profile-image` },
+    mainEntity: { '@id': `${siteUrl}/#person` }
+  };
 </script>
 
 <svelte:head>
@@ -12,6 +24,21 @@
   <meta property="og:title" content={siteData.seo.about.title} />
   <meta property="og:description" content={siteData.seo.about.description} />
   <meta property="og:type" content="profile" />
+  <meta property="og:url" content="{siteUrl}/about" />
+  <meta property="og:image" content={profileImageUrl} />
+  <meta property="og:image:secure_url" content={profileImageUrl} />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="854" />
+  <meta property="og:image:height" content="1280" />
+  <meta property="og:image:alt" content="{siteData.name} — Senior Creative Producer and Art Director" />
+  <meta property="profile:first_name" content="Tara" />
+  <meta property="profile:last_name" content="Devi" />
+  <meta name="twitter:title" content={siteData.seo.about.title} />
+  <meta name="twitter:description" content={siteData.seo.about.description} />
+  <meta name="twitter:image" content={profileImageUrl} />
+  <meta name="twitter:image:alt" content="{siteData.name} — Senior Creative Producer and Art Director" />
+  <link rel="canonical" href="{siteUrl}/about" />
+  <script type="application/ld+json">{JSON.stringify(profilePageSchema)}</script>
 </svelte:head>
 
 <!-- Section 1: Profile -->
@@ -20,7 +47,7 @@
     <div class="profile-grid">
       <div class="profile-image-col">
         <div class="profile-image-wrapper">
-          <img src={siteData.profileImage} alt={siteData.name} class="profile-image" />
+          <img src={siteData.profileImage} alt={siteData.name} width="854" height="1280" class="profile-image" />
         </div>
       </div>
       <div class="profile-content">

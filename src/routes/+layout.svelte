@@ -7,12 +7,22 @@
 
   let { children } = $props();
   const siteUrl = 'https://taradevi.studio';
+  const profileImageUrl = `${siteUrl}${siteData.profileImage}`;
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
     name: siteData.name,
     url: siteUrl,
-    image: `${siteUrl}${siteData.profileImage}`,
+    image: {
+      '@type': 'ImageObject',
+      '@id': `${siteUrl}/#profile-image`,
+      url: profileImageUrl,
+      contentUrl: profileImageUrl,
+      width: 854,
+      height: 1280,
+      caption: siteData.name
+    },
     jobTitle: 'Senior Creative Producer',
     description: siteData.seo.home.description,
     address: {
